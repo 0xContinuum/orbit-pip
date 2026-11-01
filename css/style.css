@@ -1,0 +1,52 @@
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#120a2e;overscroll-behavior:none;touch-action:none;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:#fff}
+canvas{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.hidden{display:none!important}
+
+/* HUD */
+#hud{position:fixed;top:max(10px,env(safe-area-inset-top));left:0;right:0;display:flex;justify-content:space-between;
+  padding:0 max(12px,env(safe-area-inset-left));pointer-events:none;z-index:5}
+.round{pointer-events:auto;width:clamp(40px,7vmin,58px);height:clamp(40px,7vmin,58px);border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.16);backdrop-filter:blur(4px);display:grid;place-items:center;padding:0;
+  box-shadow:0 3px 0 rgba(0,0,0,.25);transition:transform .08s,background .15s}
+.round:hover{background:rgba(255,255,255,.26)}
+.round:active{transform:translateY(2px) scale(.96)}
+.round svg{width:56%;height:56%;fill:#fff}
+.round svg .stroke{fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round}
+
+/* Screens */
+.screen{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(8px,2.2vmin,20px);text-align:center;padding:16px;background:radial-gradient(ellipse at center,rgba(18,10,46,.35),rgba(18,10,46,.82))}
+#start{justify-content:flex-start;padding-top:clamp(24px,9vh,110px);background:linear-gradient(rgba(18,10,46,.55),rgba(18,10,46,0) 70%)}
+h1{margin:0;font-size:clamp(40px,12vmin,110px);font-weight:900;letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(180deg,#fff 20%,#ffd86b 60%,#ff8a5c);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 0 rgba(0,0,0,.35));animation:bob 2.6s ease-in-out infinite}
+h2{margin:0;font-size:clamp(28px,7.5vmin,64px);font-weight:900;filter:drop-shadow(0 3px 0 rgba(0,0,0,.35))}
+.sub{margin:0;font-size:clamp(14px,3vmin,24px);opacity:.92;font-weight:600;max-width:90vw}
+.dim{opacity:.65}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+
+/* Buttons */
+.btn{border:0;border-radius:999px;color:#fff;font-weight:800;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:.65em 1.6em;font-size:clamp(16px,3.4vmin,26px);box-shadow:0 5px 0 rgba(0,0,0,.3);transition:transform .08s,box-shadow .08s,filter .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.3)}
+.btn.big{font-size:clamp(22px,5.4vmin,40px);padding:.6em 2em}
+.btn.small{font-size:clamp(13px,2.6vmin,19px);padding:.5em 1.2em}
+.btn.green{background:linear-gradient(#4be36b,#1fb84a);animation:pulse 1.6s ease-in-out infinite}
+.btn.purple{background:linear-gradient(#a45cff,#6d33d6)}
+.btn.ghost{background:rgba(255,255,255,.16);box-shadow:0 3px 0 rgba(0,0,0,.25)}
+.film{width:1.3em;height:1.3em;fill:#fff;flex:none}
+.row{display:flex;gap:12px}
+
+/* Game over */
+.score-box{display:flex;flex-direction:column;align-items:center;gap:4px}
+.score-num{font-size:clamp(56px,16vmin,140px);font-weight:900;line-height:1;color:#ffd86b;filter:drop-shadow(0 4px 0 rgba(0,0,0,.35))}
+.badge{background:#ff5c8a;padding:.2em .9em;border-radius:999px;font-weight:800;font-size:clamp(13px,2.8vmin,22px);animation:pulse .9s infinite;box-shadow:0 3px 0 rgba(0,0,0,.3)}
+.actions{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,2.4vmin,18px)}
+/* standard button is always >= rewarded button, green, and sits above it */
+#btnRevive{font-size:clamp(14px,2.8vmin,22px)}
+
+#adShade{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.001)}
